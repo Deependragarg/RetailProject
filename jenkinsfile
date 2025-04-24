@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Sanity Check') {
+        stage('Hello') {
             steps {
-                echo '✅ Jenkins is executing the pipeline stage correctly!'
+                echo 'Hello from Jenkins pipeline!'
             }
         }
     }
