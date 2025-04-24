@@ -1,18 +1,10 @@
 pipeline {
     agent any
-    
-    environment {
-        JAVA_HOME = '/opt/bitnami/java'
-        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
-    }
 
     stages {
-        stage('Setup Virtual Environment') {
+        stage('Test Hello') {
             steps {
-                echo 'Creating virtual environment...'
-                sh 'python3 -m venv retail_pipeline_venv'
-                sh './retail_pipeline_venv/bin/pip install --upgrade pip'
-                sh './retail_pipeline_venv/bin/pip install pipenv'
+                echo 'Hello from Jenkins!'
             }
         }
     }
