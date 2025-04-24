@@ -2,24 +2,18 @@ pipeline {
     agent any
     
     environment {
-        LABS = credentials('labcreds')
-        JAVA_HOME = '/opt/bitnami/java'  // Set your JAVA_HOME path here.
-        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"  // Add Java binaries to PATH
+        JAVA_HOME = '/opt/bitnami/java'
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
     }
-    
+
     stages {
         stage('Setup Virtual Environment') {
             steps {
-                script {
-                    // Create a virtual environment with the project name (Retail pipeline)
-                    sh 'python3 -m venv retail_pipeline_venv'
-                    // Upgrade pip and install pipenv in the virtual environment
-                    sh './retail_pipeline_venv/bin/pip install --upgrade pip'
-                    sh './retail_pipeline_venv/bin/pip install pipenv'
-                }
+                echo 'Creating virtual environment...'
+                sh 'python3 -m venv retail_pipeline_venv'
+                sh './retail_pipeline_venv/bin/pip install --upgrade pip'
+                sh './retail_pipeline_venv/bin/pip install pipenv'
             }
         }
     }
 }
-
-
